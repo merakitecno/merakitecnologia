@@ -119,3 +119,24 @@ ul{margin-top:20px;}
   background:#1ebe5d;
 }
 
+/* BOTÃO FIXO DE WHATSAPP */
+.whatsapp-fixed{
+  position:fixed;
+  bottom:25px;
+  right:25px;
+  background:#25D366;
+  padding:15px 22px;
+  border-radius:50px;
+  color:white;
+  text-decoration:none;
+  font-weight:700;
+  font-size:16px;
+  z-index:9999;
+  box-shadow:0 4px 12px rgba(0,0,0,0.3);
+  transition:.3s;
+}
+
+.whatsapp-fixed:hover{
+  background:#1ebe5d;
+  transform:scale(1.05);
+}
