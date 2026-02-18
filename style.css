@@ -9,7 +9,7 @@
 
 body{
   overflow:hidden;
-  background:linear-gradient(to bottom, #F3F4F6, #E5E7EB);
+  background:linear-gradient(to bottom, #D5D7DB, #C7CBD1); /* CINZA INDUSTRIAL PREMIUM */
   color:#374151;
   font-family:'Inter', sans-serif;
 }
@@ -132,14 +132,16 @@ body{
   justify-content:center;
 }
 
-/* MARCA D'ÁGUA */
+/* =========================
+   MARCA D'ÁGUA PREMIUM
+========================= */
 .slide::before{
   content:"";
   position:absolute;
   inset:0;
-  background:url('logo-meraki.png') center/60% no-repeat;
-  opacity:0.06;
-  filter:blur(1px);
+  background:url('logo-meraki.png') center/50% no-repeat;
+  opacity:0.14; /* MAIS APARENTE */
+  filter:blur(0.5px) brightness(0.85); /* MAIS VISÍVEL, SEM POLUIR */
   z-index:-1;
 }
 
@@ -162,7 +164,7 @@ h1{
 p, li{
   font-size:22px;
   line-height:1.55;
-  color:#374151;
+  color:#2F3540;
   font-weight:400;
 }
 
