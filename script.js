@@ -2,7 +2,7 @@
 const splash = document.getElementById("splash");
 const whatsButton = document.getElementById("whatsButton");
 
-let auto = false; // só ativa depois da splash
+let auto = false;
 
 splash.addEventListener("click", () => {
   splash.style.opacity = "0";
@@ -11,7 +11,6 @@ splash.addEventListener("click", () => {
     splash.style.display = "none";
     auto = true;
 
-    // Exibe o botão do WhatsApp
     whatsButton.style.opacity = "1";
     whatsButton.style.pointerEvents = "auto";
     whatsButton.style.zIndex = "9000";
@@ -86,7 +85,7 @@ document.getElementById("logoNav").addEventListener("click", () => {
   showSlide(0);
 });
 
-// Hiperlink direto para slide (se quiser usar no HTML)
+// Hiperlink direto para slide
 function goToSlide(n){
   auto = false;
   index = n;
