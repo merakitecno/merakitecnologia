@@ -9,7 +9,7 @@
 
 body{
   overflow:hidden;
-  background:linear-gradient(to bottom, #D5D7DB, #C7CBD1); /* CINZA INDUSTRIAL PREMIUM */
+  background:linear-gradient(to bottom, #C7CBD1, #B9BEC5); /* CINZA INDUSTRIAL ESCURO PREMIUM */
   color:#374151;
   font-family:'Inter', sans-serif;
 }
@@ -130,6 +130,14 @@ body{
   display:flex;
   flex-direction:column;
   justify-content:center;
+
+  /* IMAGEM DE FUNDO DINÂMICA */
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+
+  /* OVERLAY TÉCNICO PARA LEITURA */
+  box-shadow:inset 0 0 0 2000px rgba(15, 27, 43, 0.45);
 }
 
 /* =========================
@@ -139,9 +147,9 @@ body{
   content:"";
   position:absolute;
   inset:0;
-  background:url('logo-meraki.png') center/50% no-repeat;
-  opacity:0.14; /* MAIS APARENTE */
-  filter:blur(0.5px) brightness(0.85); /* MAIS VISÍVEL, SEM POLUIR */
+  background:url('logo-meraki.png') center/45% no-repeat;
+  opacity:0.18; /* MAIS APARENTE */
+  filter:blur(0.5px) brightness(0.85);
   z-index:-1;
 }
 
@@ -156,16 +164,18 @@ h1{
   font-family:'Space Grotesk', sans-serif;
   font-size:52px;
   margin-bottom:22px;
-  color:#0F1B2B;
+  color:#F9FAFB; /* quase branco, contraste perfeito */
   font-weight:700;
   letter-spacing:-0.5px;
+  text-shadow:0 2px 6px rgba(0,0,0,0.35);
 }
 
 p, li{
   font-size:22px;
   line-height:1.55;
-  color:#2F3540;
+  color:#E5E7EB;
   font-weight:400;
+  text-shadow:0 1px 4px rgba(0,0,0,0.35);
 }
 
 ul{
