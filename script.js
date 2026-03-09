@@ -26,7 +26,6 @@ splash.addEventListener("click", () => {
 const slides = document.querySelectorAll(".slide");
 let index = 0;
 
-// aplica as imagens de fundo com base no data-bg
 slides.forEach(slide => {
   let bg = slide.getAttribute("data-bg");
 
@@ -48,24 +47,19 @@ showSlide(index);
 
 
 // =========================
-// INDICADORES COM LETRAS + PADRÃO MERAKI
+// INDICADORES MERAKI
 // =========================
 const indicatorsContainer = document.getElementById("indicators");
-
-// Letras do nome da empresa
 const letters = ["M", "E", "R", "A", "K", "I"];
-
-const indicators = []; // armazenar todos os marcadores
+const indicators = [];
 
 slides.forEach((_, i) => {
   const dot = document.createElement("div");
 
-  // Se existir letra → marcador com letra
   if (i < letters.length) {
     dot.classList.add("indicator");
     dot.textContent = letters[i];
   } else {
-    // Marcadores extras → pequenos e azuis
     dot.classList.add("indicator-default");
   }
 
@@ -80,14 +74,10 @@ slides.forEach((_, i) => {
   indicatorsContainer.appendChild(dot);
 });
 
-// Atualiza o estado visual dos marcadores
 function updateIndicators(){
   indicators.forEach((dot, i) => {
     dot.classList.remove("active");
-
-    if (i === index) {
-      dot.classList.add("active");
-    }
+    if (i === index) dot.classList.add("active");
   });
 }
 
@@ -95,7 +85,7 @@ updateIndicators();
 
 
 // =========================
-// AUTOMÁTICO
+// AUTOPLAY
 // =========================
 function nextSlide(){
   if(!auto) return;
@@ -127,7 +117,7 @@ window.addEventListener("wheel", (event) => {
 
 
 // =========================
-// LOGO NAVBAR → VOLTAR AO SLIDE 0
+// LOGO NAVBAR
 // =========================
 document.getElementById("logoNav").addEventListener("click", () => {
   auto = false;
@@ -137,7 +127,7 @@ document.getElementById("logoNav").addEventListener("click", () => {
 
 
 // =========================
-// Hiperlink direto para slide
+// LINK DIRETO
 // =========================
 function goToSlide(n){
   auto = false;
