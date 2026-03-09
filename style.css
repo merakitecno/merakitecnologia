@@ -137,7 +137,14 @@ body{
   background-repeat:no-repeat;
 
   box-shadow:inset 0 0 0 2000px rgba(0,0,0,0.45);
+
+  pointer-events:none; /* impede o overlay de bloquear */
 }
+
+.slide *{
+  pointer-events:auto; /* devolve o clique ao conteúdo */
+}
+
 
 .slide::before{
   content:"";
