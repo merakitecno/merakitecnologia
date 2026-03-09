@@ -61,8 +61,8 @@ body{
   width:100%;
   height:72px;
   display:flex;
-  justify-content:center; /* CENTRALIZA HORIZONTALMENTE */
-  align-items:center;     /* CENTRALIZA VERTICALMENTE */
+  justify-content:center;
+  align-items:center;
   padding:0 28px;
   z-index:100;
   background:#FFFFFFE6;
@@ -70,16 +70,14 @@ body{
   box-shadow:0 2px 8px rgba(0,0,0,0.06);
 }
 
-
 #logoNav{
-  height:110px; /* tamanho maior que você pediu */
+  height:110px;
   position:relative;
-  z-index:99999; /* garante que o clique funcione */
+  z-index:99999;
   cursor:pointer;
   transition:transform .35s ease, filter .35s ease;
   filter:drop-shadow(0 3px 6px rgba(0,0,0,0.18));
 }
-
 
 #logoNav:hover{
   transform:perspective(600px) rotateX(8deg) scale(1.04);
@@ -94,14 +92,14 @@ body{
   bottom:28px;
   right:28px;
   padding:14px 26px;
-  background:#25D366; /* verde WhatsApp */
-  border-radius:40px; /* arredondado */
+  background:#25D366;
+  border-radius:40px;
   display:flex;
   justify-content:center;
   align-items:center;
   font-size:18px;
   font-weight:600;
-  color:#0F1B2B; /* texto escuro */
+  color:#0F1B2B;
   box-shadow:0 4px 12px rgba(0,0,0,0.25);
   z-index:9999;
   cursor:pointer;
@@ -113,8 +111,6 @@ body{
 #whatsButton:hover{
   transform:scale(1.06);
 }
-
-
 
 /* =========================
    SLIDES
@@ -136,18 +132,13 @@ body{
   flex-direction:column;
   justify-content:center;
 
-  /* IMAGEM DE FUNDO */
   background-size:cover;
   background-position:center;
   background-repeat:no-repeat;
 
-  /* OVERLAY */
   box-shadow:inset 0 0 0 2000px rgba(0,0,0,0.45);
 }
 
-/* =========================
-   MARCA D'ÁGUA
-========================= */
 .slide::before{
   content:"";
   position:absolute;
@@ -197,7 +188,7 @@ ul{
   transform:translateX(-50%);
   display:flex;
   gap:18px;
-  z-index:50;
+  z-index:10000; /* AGORA FICA ACIMA DE TUDO */
 }
 
 /* Marcadores com letra (M E R A K I) — tamanho médio */
@@ -247,8 +238,6 @@ ul{
   transform:scale(1.35);
   opacity:1;
 }
-
-
 
 /* =========================
    RESPONSIVO
