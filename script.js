@@ -46,7 +46,7 @@ function showSlide(i){
 showSlide(index);
 
 // =========================
-// INDICADORES COM LETRAS
+// INDICADORES COM LETRAS + PADRÃO MERAKI
 // =========================
 const indicatorsContainer = document.getElementById("indicators");
 
@@ -56,7 +56,15 @@ const letters = ["M", "E", "R", "A", "K", "I"];
 slides.forEach((_, i) => {
   const dot = document.createElement("div");
   dot.classList.add("indicator");
-  dot.textContent = letters[i] || ""; // caso tenha mais slides que letras
+
+  // Se existir letra, usa; se não, deixa vazio
+  const letter = letters[i] || "";
+  dot.textContent = letter;
+
+  // Se não tiver letra → marcador padrão Meraki
+  if (letter === "") {
+    dot.classList.add("indicator-default");
+  }
 
   dot.addEventListener("click", () => {
     auto = false;
@@ -67,12 +75,6 @@ slides.forEach((_, i) => {
   indicatorsContainer.appendChild(dot);
 });
 
-function updateIndicators(){
-  const dots = document.querySelectorAll(".indicator");
-  dots.forEach((d, i) => {
-    d.classList.toggle("active", i === index);
-  });
-}
 
 
 // =========================
