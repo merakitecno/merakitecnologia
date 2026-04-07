@@ -1,218 +1,268 @@
 /* =========================
-   RESET & VARIÁVEIS
+   1. VARIÁVEIS E RESET
 ========================= */
 :root {
   --primary-blue: #1A73E8;
   --dark-bg: #0F1B2B;
   --text-gray: #E5E7EB;
   --white-alpha: rgba(255, 255, 255, 0.9);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body{
-  overflow:hidden;
+body {
+  overflow: hidden;
   background: var(--dark-bg);
   color: var(--text-gray);
-  font-family:'Inter', sans-serif;
-  -webkit-font-smoothing: antialiased; /* Melhora a definição da fonte */
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* =========================
-   SPLASH (Entrada)
+   2. SPLASH (Entrada)
 ========================= */
-#splash{
-  position:fixed;
-  inset:0;
+#splash {
+  position: fixed;
+  inset: 0;
   background: white;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  z-index:999999;
-  cursor:pointer;
-  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 999999;
+  cursor: pointer;
+  transition: opacity 0.8s ease, visibility 0.8s;
 }
 
-.splash-logo{
-  width:360px;
-  max-width:75vw;
-  opacity:0;
+.splash-logo {
+  width: 360px;
+  max-width: 75vw;
+  opacity: 0;
   animation: fadeIn 1.2s forwards ease-out;
   filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
 }
 
-.splash-text{
-  margin-top:28px;
-  font-size:20px;
-  letter-spacing: 1px;
+.splash-text {
+  margin-top: 28px;
+  font-size: 18px;
+  letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--primary-blue);
-  opacity:0;
+  opacity: 0;
   animation: fadeIn 1.5s 0.5s forwards;
 }
 
 /* =========================
-   NAVBAR (Otimizada)
+   3. NAVBAR
 ========================= */
-.navbar{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:80px; /* Aumentado levemente para respiro */
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  z-index:100;
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
   background: var(--white-alpha);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
-#logoNav{
-  height:70px; /* Ajustado para não estourar a barra */
-  transition: transform 0.3s ease;
+#logoNav {
+  height: 60px; /* Ajustado para melhor proporção */
+  cursor: pointer;
+  transition: var(--transition);
 }
 
-#logoNav:hover{
+#logoNav:hover {
   transform: scale(1.05);
 }
 
 /* =========================
-   WHATSAPP (CTA Principal)
+   4. WHATSAPP BUTTON
 ========================= */
-#whatsButton{
-  position:fixed;
-  bottom:30px;
-  right:30px;
-  padding:16px 28px;
-  background:#25D366;
-  border-radius:50px;
+#whatsButton {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  padding: 16px 28px;
+  background: #25D366;
+  border-radius: 50px;
   text-decoration: none;
-  font-size:16px;
-  font-weight:700;
-  color: white; /* Branco para melhor contraste no verde */
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
   box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
-  z-index:9999;
-  transition: all 0.3s ease;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: var(--transition);
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-#whatsButton:hover{
+#whatsButton:hover {
   transform: translateY(-5px);
   box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4);
 }
 
 /* =========================
-   SLIDES & CONTEÚDO
+   5. SLIDES & CONTEÚDO
 ========================= */
-.slide{
-  position:absolute;
-  inset:0;
-  padding:120px 10%; /* Padding lateral em % para melhor responsividade */
-  opacity:0;
-  transition: opacity 0.7s ease-in-out;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
-  /* Overlay mais escuro para garantir leitura dos textos técnicos */
-  background-color: rgba(0, 0, 0, 0.6); 
+#slides-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  padding: 120px 10%;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: rgba(0, 0, 0, 0.6);
   background-blend-mode: darken;
 }
 
-.slide.active{
-  opacity:1;
-  pointer-events: auto;
+.slide.active {
+  opacity: 1;
 }
 
-h1, h2 {
-  font-family:'Space Grotesk', sans-serif;
-  font-size: clamp(32px, 5vw, 56px); /* Fonte fluida */
+h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(32px, 5vw, 56px);
   margin-bottom: 24px;
   color: #FFFFFF;
   line-height: 1.1;
+  text-shadow: 0 4px 10px rgba(0,0,0,0.5);
 }
 
 p, li {
-  font-size: clamp(16px, 2vw, 22px);
+  font-size: clamp(16px, 2vw, 20px);
   max-width: 800px;
   margin-bottom: 12px;
   color: #D1D5DB;
+  line-height: 1.6;
 }
 
-/* Estilo para listas técnicas */
 ul {
   list-style: none;
+  margin-left: 5px;
 }
 
 ul li::before {
   content: "▹";
   color: var(--primary-blue);
-  margin-right: 10px;
+  margin-right: 12px;
   font-weight: bold;
 }
 
 /* =========================
-   INDICADORES
+   6. INDICADORES (CORREÇÃO MERAKI)
 ========================= */
-#indicators{
-  position:fixed;
-  bottom:40px;
-  left:50%;
-  transform:translateX(-50%);
-  display:flex;
-  gap:12px;
-  z-index:10000;
+#indicators {
+  position: fixed;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center; /* Garante alinhamento vertical entre bolas grandes e pequenas */
+  gap: 12px;
+  z-index: 10000;
 }
 
+/* Base comum para os círculos */
 .indicator, .indicator-default {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: var(--transition);
   border: 2px solid transparent;
+  background: rgba(255, 255, 255, 0.2);
 }
 
+/* Círculos com Letras (M-E-R-A-K-I) */
+.indicator {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  color: white;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1; /* Remove o respiro da fonte */
+  text-transform: uppercase;
+}
+
+/* Círculos Vazios */
+.indicator-default {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  color: transparent;
+}
+
+/* Estado Ativo */
 .indicator.active, .indicator-default.active {
   background: var(--primary-blue);
-  transform: scale(1.4);
   border-color: white;
+  transform: scale(1.2);
+  box-shadow: 0 0 15px rgba(26, 115, 232, 0.6);
+}
+
+/* Hover */
+.indicator:hover {
+  background: var(--primary-blue);
+  opacity: 0.8;
 }
 
 /* =========================
-   KEYFRAMES & MEDIA QUERIES
+   7. RESPONSIVIDADE
 ========================= */
-@keyframes fadeIn{
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@media(max-width:768px){
+@media(max-width: 768px) {
   .slide {
-    padding: 80px 5%;
+    padding: 100px 8%;
     text-align: center;
     align-items: center;
   }
+
+  h1 { font-size: 30px; }
   
+  #indicators {
+    gap: 8px;
+    bottom: 25px;
+  }
+
+  .indicator {
+    width: 28px;
+    height: 28px;
+    font-size: 11px;
+  }
+
   #whatsButton {
-    bottom: 20px;
+    bottom: 80px; /* Sobe o botão para não tapar os indicadores no mobile */
     right: 20px;
     padding: 12px 20px;
-    font-size: 14px;
   }
-  
-  .navbar { height: 60px; }
-  #logoNav { height: 45px; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
