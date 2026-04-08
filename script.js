@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
   let auto = false;
   let isScrolling = false;
 
-  // Splash Screen
   splash.addEventListener("click", () => {
     splash.style.opacity = "0";
     setTimeout(() => {
@@ -19,7 +18,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 600);
   });
 
-  // Indicadores MERAKI
   const pattern = ["", "", "M", "E", "R", "A", "K", "I", "", ""];
   const indicators = [];
 
@@ -42,10 +40,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   changeSlide(0);
 
-  // Autoplay
   setInterval(() => { if (auto && !document.hidden) changeSlide(index + 1); }, 6000);
 
-  // Scroll Mouse
   window.addEventListener("wheel", (e) => {
     if (isScrolling) return;
     auto = false; isScrolling = true;
@@ -53,7 +49,6 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => { isScrolling = false; }, 800);
   }, { passive: true });
 
-  // Touch Mobile
   let touchStartY = 0;
   window.addEventListener("touchstart", (e) => { touchStartY = e.changedTouches[0].screenY; }, { passive: true });
   window.addEventListener("touchend", (e) => {
